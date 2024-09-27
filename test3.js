@@ -69,11 +69,7 @@ io.on('connection', (socket) => {
 
 // 클라이언트에 데이터 전송
 function notifyClients() {
-    if (cnn.state === 'disconnected') {
-        console.error('MySQL 연결이 끊어졌습니다. 재연결 시도 중...');
-        
-        
-    }
+    
     const sql = 'SELECT * FROM sensor_readins ORDER BY timestamp DESC LIMIT 1';
     cnn.query(sql, (err, result) => {
         if (err) {
