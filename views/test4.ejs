@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script> <!-- Socket.IO 스크립트 -->
+</head>
+<body>
+    <h2>Latest Heart Sensor Value: <span id="heartSensorValue">Loading...</span></h2>
+
+    <script>
+        const socket = io(); // Socket.IO 클라이언트 초기화
+
+        socket.on('update', (data) => {
+            console.log('Latest Heart Sensor Data:', data.heartSensor);
+            document.getElementById('heartSensorValue').innerText = data.heartSensor; // 센서 값 업데이트
+        });
+    </script> 
+</body>
+</html>

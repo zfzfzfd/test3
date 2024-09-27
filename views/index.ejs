@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="title" content="웹사이트">
+  <meta name="description" content="웹사이트입니다.">
+  <meta name="keywords" content="키워드,키워드,키워드">
+  <meta property="og:title" content="웹사이트">
+  <meta property="og:description" content="웹사이트입니다">
+  <meta property="og:image" content="https://웹사이트/images/opengraph.png">
+  <meta property="og:url" content="https://웹사이트">
+  <title>건강정보페이지</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="/setting.css">
+  <link rel="stylesheet" href="/plugin.css">
+  <link rel="stylesheet" href="/template.css">
+  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="/style.css">
+  
+</head>
+
+<body>
+  <!-- [S]basic-N1 -->
+  <header class="basic-N1" data-bid="wDm1ATwIV7">
+    <div class="header-inner">
+      <div class="header-container container-lg">
+        <h1 class="header-title"><a href="javascript:void(0)"><img src="/f5fbbdc0f2874f6382290b37d80ca325.png" alt="로고" style="width: 200px; height: 50px; position: relative;"></a></h1>
+        <div class="header-center"> 
+          <div class="header-title header-mobile-top"><a href="javascript:void(0)"><img src="/img_logo_black.png" alt="로고"></a></div>
+          <ul class="header-gnblist">
+            <li class="header-gnbitem"><a class="header-gnblink" href="#summary"><span data-aos="" class="">총평</span></a></li>
+            <li class="header-gnbitem"><a class="header-gnblink" href="#GPS"><span>위치</span></a></li>
+            <li class="header-gnbitem"><a class="header-gnblink" href="#heart"><span>심박수</span></a></li>
+            <li class="header-gnbitem"><a class="header-gnblink" href="#steps"><span>걸음수</span></a></li>
+            <li class="header-gnbitem"><a class="header-gnblink" href="#pressure"><span>복압</span></a></li>
+            <li class="header-gnbitem"><a class="header-gnblink" href="#notes"><span>특이사항</span></a></li>
+          </ul>
+        </div>
+        <div class="header-right">
+          <div class="header-lang"><button class="header-langbtn">KOR</button>
+            <ul class="header-langlist">
+              <li class="header-langitem"><a href="javascript:void(0)">KOR</a></li>
+              <li class="header-langitem"><a href="javascript:void(0)">ENG</a></li>
+            </ul>
+          </div>
+          <div class="header-utils">
+            <button onclick="location.href='/personal'"><span><%= userName %>님</span></button></div>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="header-dim"></div>
+  </header>
+  <!-- [E]basic-N1 -->
+  <main class="th-layout-main ">
+    <!-- [S]basic-N1 -->
+    <div class="basic-N1" data-bid="rom1c1yk17">
+      <div class="header-dim"></div>
+    </div>
+    <!-- [E]basic-N1 -->
+    <!-- [S]basic-N14 -->
+    <div class="basic-N14" data-bid="uYm1BheYYC" id="summary">
+      <div class="contents-inner">
+        <div class="contents-container container-md">
+          <div class="textset">
+            <h2 class="textset-tit">총 평</h2>
+          </div>
+          
+          
+          <div class="contents-group">
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/summary.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">건강 상태</h2>
+                <p class="cardset-desc">현재 건강상태는 '보통'입니다.</p>
+              </div>
+            </div>
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/GPS.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">위치</h2>
+                <p class="cardset-desc">현재 위치는 '전남대학교 여수캠퍼스 제2공학관'입니다.</p>
+              </div>
+            </div>
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/heart.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                  <h2 class="cardset-tit">심박수</h2>
+                  <p class="cardset-desc">현재심박수는 '<span id="heartSensorValue"> </span>'bpm입니다.</p>
+                  <script>
+                    const socket = io(); // Socket.IO 클라이언트 초기화
+            
+                    socket.on('update', (data) => {
+                        console.log('Latest Heart Sensor Data:', data.heartSensor);
+                        document.getElementById('heartSensorValue').innerText = data.heartSensor; // 센서 값 업데이트
+                    });
+                </script>
+                  
+                </div>
+          </div>
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/step.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">걸음수</h2>
+                <p class="cardset-desc">현재 걸음수는 '1500보'입니다..</p>
+              </div>
+            </div>
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/pressure.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">복압</h2>
+                <p class="cardset-desc">현재 복압상태는 '양호'입니다.</p>
+              </div>
+            </div>
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/notes.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">특이사항</h2>
+                <p class="cardset-desc">현재 특이사항은 '활동이 부족하고 복부 진찰'입니다. <br>의사 소견:~~~~~~~~~~~~~~~~~~~~~.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [E]basic-N14 -->
+    <!-- [S]basic-N38 -->
+    <div class="basic-N38" data-bid="uBM1bhpjte" id="GPS">
+      <div class="contents-inner">
+        <div class="contents-container container-md">
+          <div class="textset">
+            <h2 class="textset-tit CT_textsetLocation">위치</h2>
+          </div>
+    
+          <div id="map" style="width:100%;height:350px;"></div>
+    
+          <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=4220c5a564265788bdffb4ba0370e19e"></script>
+          <script>
+            // 임의로 설정할 위도와 경도 값
+            const latitude = 34.77677877030075;
+            const longitude = 127.70108336377254;
+    
+            function displayMap() {
+              const mapContainer = document.getElementById('map'); 
+              const mapOption = {
+                  center: new kakao.maps.LatLng(latitude, longitude), 
+                  level: 3 
+              };
+    
+              const map = new kakao.maps.Map(mapContainer, mapOption); 
+   
+              const markerPosition = new kakao.maps.LatLng(latitude, longitude); 
+              const marker = new kakao.maps.Marker({
+                  position: markerPosition
+              });
+              marker.setMap(map);
+            }
+    
+            window.onload = displayMap;
+          </script>
+    
+
+          <ul class="contents-list">
+            <li class="contents-item">
+              <div class="contents-ico">
+                <figure class="contents-figure"><img src="/ico_location_black.svg" alt="주소 아이콘"></figure>주소
+              </div>
+              <p class="contents-desc">전라남도 여수시 대학로 50 (둔덕동, 전남대학교 여수캠퍼스 제2공학관)<br>50, Daehak-ro, Yeosu-si, Jeollanam-do, Republic of Korea</p>
+            </li>
+            <li class="contents-item">
+              <div class="contents-ico">
+                <figure class="contents-figure"><img src="/ico_call_black.svg" alt="전화번호 아이콘"></figure>비상연락망
+              </div>
+              <p class="contents-desc"><%= phone %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- [E]basic-N38 -->
+    <!-- [S]basic-N20 -->
+    <div class="basic-N20" data-bid="GgM1bMpUeD" id="heart">
+      <div class="contents-inner">
+        <div class="contents-container container-md">
+          <div class="textset">
+            <h2 class="textset-tit" style="text-align: center;">심박수</h2>
+          </div>
+          <div class="contents-group">
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/img_basic_N20_1.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h5 class="cardset-tit">
+                </h5>
+                <h5 class="cardset-tit" style="font-size: var(--lh-p4); line-height: var(--lh-p4);">현재 심박수</h5>
+                <p class="cardset-desc"><%= userName %>님 나이대의 평균 심박수는 '50~60'bpm입니다. 현재 상태 '양호'입니다.&nbsp;</p>
+              </div>
+            </div>
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/img_basic_N20_2.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h5 class="cardset-tit">주간 심박수 변화 </h5>
+                <p class="cardset-desc">주감 심박수 그래프입니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [E]basic-N20 -->
+    <!-- [S]basic-N18 -->
+    <div class="basic-N18" data-bid="cSM1bn4D57" id="steps">
+      <div class="contents-inner" style="background-color: rgb(255, 255, 255);">
+        <div class="contents-container container-md">
+          <div class="textset">
+            <h2 class="textset-tit" style="text-align: center;">걸음수</h2>
+          </div>
+          <div class="contents-group">
+            <div class="cardset">
+              <div class="cardset-body">
+              </div>
+            </div>
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/img_basic_N18_2.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">오늘의 걸음수 </h2>
+                <p class="cardset-desc">오늘 <%= userName %>님의 걸음수는 '부족'입니다.&nbsp;</p>
+              </div>
+            </div>
+            <div class="cardset">
+              <div class="cardset-body">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [E]basic-N18 -->
+    <!-- [S]basic-N18 -->
+    <div class="basic-N18" data-bid="kaM1bpLxIo" id="pressure">
+      <div class="contents-inner" style="background-color: rgba(255, 255, 255, 0);">
+        <div class="contents-container container-md">
+          <div class="textset">
+            <h2 class="textset-tit" style="text-align: center;">복압</h2>
+          </div>
+          <div class="contents-group">
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/img_basic_N18_1.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">현재 복압 평균치</h2>
+                <p class="cardset-desc"><%= userName %>님 평균 복압수치는 '30'mmHg입니다. 현재 복압 수치는 '경고'입니다.</p>
+              </div>
+            </div>
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/img_basic_N18_2.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">비만도</h2>
+                <p class="cardset-desc"><%= userName %>님은 현재 비만도'경고'단계입니다.</p>
+              </div>
+            </div>
+            <div class="cardset">
+              <figure class="cardset-figure"><img class="cardset-img" src="/img_basic_N18_3.png" alt="이미지"></figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">장기 기능 확인</h2>
+                <p class="cardset-desc"><%= userName %>님의 복부 장기 기능 상태는 '경고'입니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [E]basic-N18 -->
+  </main>
+  <!-- [S]basic-N34 -->
+  <div class="basic-N34" data-bid="CKm1bsICHK" id="notes">
+    <div class="contents-inner">
+      <div class="contents-container container-md">
+        <div class="textset">
+          <h2 class="textset-tit" style="font-weight: 600; font-size: 40px;">특이사항</h2>
+          <p class="textset-desc"><%= userName %>님 오늘의 특이사항은 '활동이 부족, 복부 진찰'이 필요합니다. <br>의사 소견:~~~~~~~~~~~~~~~~~~~~~.</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- [E]basic-N34 -->
+  <!-- [S]basic-N4 -->
+  <footer class="basic-N4" data-bid="ckM1AtwjTg" id="">
+    <div class="footer-inner">
+      <div class="footer-container container-lg">
+        <div class="footer-top">
+          <h1 class="footer-logo">
+            <a href="javascript:void(0)">
+              <img src="/img_logo_lightgray.png" alt="로고">
+            </a>
+          </h1>
+          <ul class="footer-menulist">
+            <li class="footer-menuitem">
+              <a href="javascript:void(0)">
+                <span>이용약관</span>
+              </a>
+            </li>
+            <li class="footer-menuitem">
+              <a href="javascript:void(0)">
+                <span>개인정보처리방침</span>
+              </a>
+            </li>
+            <li class="footer-menuitem">
+              <a href="javascript:void(0)">
+                <span>문의</span>
+              </a>
+            </li>
+            <li class="footer-menuitem">
+              <a href="javascript:void(0)">
+                <span>배고프다</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="footer-snslist">
+            <li class="footer-snsitem">
+              <a class="footer-snslink" href="javascript:void(0)">
+                <img src="/ico_instagram_lightgrey.svg" alt="인스타그램">
+              </a>
+            </li>
+            <li class="footer-snsitem">
+              <a class="footer-snslink" href="javascript:void(0)">
+                <img src="/ico_youtube_lightgrey.svg" alt="유튜브">
+              </a>
+            </li>
+            <li class="footer-snsitem">
+              <a class="footer-snslink" href="javascript:void(0)">
+                <img src="/ico_facebook_lightgrey.svg" alt="페이스북">
+              </a>
+            </li>
+            <li class="footer-snsitem">
+              <a class="footer-snslink" href="javascript:void(0)">
+                <img src="/ico_kakao_lightgrey.svg" alt="카카오톡">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-txt">
+            <p> 전남대학교 여수캠퍼스 2공학관 414호 </p>
+            <p>
+              <span>T. 061-XXXX-XXXX</span>
+              <span>E. XXXXX@jnu.ac.kr</span>
+            </p>
+          </div>
+          <div class="footer-txt">
+            <p>2024 BY CAPSTONE DESING, TEAM L.E</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+  <!-- [E]basic-N4 -->
+  
+  <script src="/setting.js"></script>
+  <script src="/plugin.js"></script>
+  <script src="/template.js"></script>
+  <script src="/common.js"></script>
+  <script src="/script.js"></script>
+  
+  
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logo</title>
+    <link rel="stylesheet" href="/firstcss.css">
+    <script src="/socket.io/socket.io.js"></script>
+
+<body>
+    
+    
+    <div class="container">
+        <div class="login-left">
+            <div class="login-header">
+                <h1 class="welcom-message">Life of Engineer.</h1>
+            </div>
+            <form class="login-form" action="/loginProc" method="post">
+                <div class="login-form-content">
+                    <div class="form-item">
+                        <label for="user_id">ID</label>
+                        <input type="text" id="user_id" name="user_id" placeholder="이메일을 입력하세요" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="pw">Password</label>
+                        <input type="password" id="pw" name="pw" placeholder="비밀번호를 입력하세요" required>
+                    </div>
+                    <div class="form-item">
+                    </div>
+                    <!-- onclick 제거 -->
+                    <button type="submit">로그인</button>
+                </div>
+                <div class="login-form-footer">
+                    <a href="/signup">
+                        <img width="30" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="">
+                        회원가입
+                    </a>
+                </div>
+            </form>
+                    
+                
+            
+            
+        </div>
+
+        <div class="login-right">
+            <img class="login-image" src="/img_basic_N37_1.png" alt="">
+        </div>
+    </div>
+</body>
+
