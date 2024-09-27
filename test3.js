@@ -19,17 +19,15 @@ app.set('view engine', 'ejs');
 
 
 const cnn = mysql.createConnection({
-        host: '192.168.0.102',
-        user: 'test',
+        host: '192.168.0.100',
+        user: 'newuser1',
         password: '1234',
-        database: 'data',
-        connectTimeout: 10000
+        database: 'data'
     });
 
     cnn.connect(err => {
         if (err) {
-            console.error('MySQL 연결 실패:', err);
-            
+            console.error('MySQL 연결 실패:', err.code, err.message);
         } else {
             console.log('MySQL 연결 성공');
         }
@@ -69,7 +67,11 @@ io.on('connection', (socket) => {
 
 // 클라이언트에 데이터 전송
 function notifyClients() {
-    
+    if (!cnn) {
+        console.error('데이터베이스 연결이 없습니다.');
+        return;
+    }
+
     const sql = 'SELECT * FROM sensor_readins ORDER BY timestamp DESC LIMIT 1';
     cnn.query(sql, (err, result) => {
         if (err) {
@@ -77,7 +79,6 @@ function notifyClients() {
             return;
         }
         if (result.length > 0) {
-            
             const latestData = result[0];
             io.emit('update', { heartSensor: latestData.Heart_s });
         }
