@@ -6,6 +6,7 @@ const http = require('http');
 const socketIO = require('socket.io');
 
 const app = express();
+
 const port = 3000;
 
 const server = http.createServer(app);
@@ -22,9 +23,6 @@ const cnn = mysql.createConnection({
         user: 'test',
         password: '1234',
         database: 'data',
-        ssl: {
-            rejectUnauthorized: false // 인증서를 확인하지 않도록 설정 (개발용)
-        },
         connectTimeout: 10000
     });
 
@@ -48,7 +46,7 @@ const cnn = mysql.createConnection({
 
 
 
-
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
