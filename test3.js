@@ -22,6 +22,9 @@ const cnn = mysql.createConnection({
         user: 'test',
         password: '1234',
         database: 'data',
+        ssl: {
+            rejectUnauthorized: false // 인증서를 확인하지 않도록 설정 (개발용)
+        },
         connectTimeout: 10000
     });
 
@@ -80,6 +83,7 @@ function notifyClients() {
             return;
         }
         if (result.length > 0) {
+            
             const latestData = result[0];
             io.emit('update', { heartSensor: latestData.Heart_s });
         }
